@@ -1,0 +1,53 @@
+name: Extensão do Edge
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extensao:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Testes da lógica
+        run: node testes-extensao/teste_logica.js
+
+      - name: Preparar Chrome para o teste completo
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Teste completo (extensão num Chrome de verdade, em sites de teste)
+        run: xvfb-run -a python testes-extensao/teste_extensao_chrome.py
+
+      - name: Empacotar
+        run: cd extensao && zip -qr ../CobrancasKAES-Extensao-Edge.zip .
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CobrancasKAES-Extensao-Edge
+          path: CobrancasKAES-Extensao-Edge.zip
+
+      - name: Publicar em Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: extensao-v1.0.${{ github.run_number }}
+          name: Extensão do Edge v1.0.${{ github.run_number }}
+          body: |
+            Baixe **CobrancasKAES-Extensao-Edge.zip**, descompacte numa pasta fixa e siga o
+            **COMO-INSTALAR.txt** que está dentro.
+          files: CobrancasKAES-Extensao-Edge.zip
+          make_latest: true

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Cobranças KAES</title>
+  <link rel="stylesheet" href="painel.css">
+</head>
+<body>
+  <header>
+    <div class="titulo"><img src="icones/48.png" alt=""> Cobranças KAES</div>
+    <div id="modoIA" class="sub"></div>
+  </header>
+
+  <nav id="abas">
+    <button data-aba="conversa" class="ativa">Conversa</button>
+    <button data-aba="resultados">Resultados</button>
+    <button data-aba="mensagens">Mensagens</button>
+    <button data-aba="atualizar">Atualizar</button>
+    <button data-aba="config" title="Configurações">⚙️</button>
+  </nav>
+
+  <main>
+    <!-- CONVERSA -->
+    <section id="aba-conversa" class="aba ativa">
+      <div id="chat"></div>
+      <div id="atalhos">
+        <button data-cmd="conferir">🔎 Conferir vencidos</button>
+        <button data-cmd="mensagens">✉️ Gerar mensagens</button>
+        <button data-cmd="atualizar">✅ Atualizar ClickUp</button>
+        <button data-cmd="mensagem_cliente">👤 Mensagem p/ cliente</button>
+      </div>
+      <form id="formCmd" autocomplete="off">
+        <input id="cmd" placeholder="Escreva aqui… ex.: quem tá devendo?">
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <!-- RESULTADOS -->
+    <section id="aba-resultados" class="aba">
+      <div class="linha">
+        <span id="resumo" class="sub">Nenhuma conferência ainda.</span>
+      </div>
+      <div class="filtros" id="filtros"></div>
+      <div id="listaResultados"></div>
+      <button id="copiarRelatorio" class="secundario">📋 Copiar relatório em texto</button>
+    </section>
+
+    <!-- MENSAGENS -->
+    <section id="aba-mensagens" class="aba">
+      <div class="linha">
+        <span class="sub" id="qtdMsgs">Nenhuma mensagem gerada.</span>
+        <button id="copiarTodas" class="secundario">Copiar todas</button>
+      </div>
+      <div id="listaMensagens"></div>
+    </section>
+
+    <!-- ATUALIZAR -->
+    <section id="aba-atualizar" class="aba">
+      <p class="sub">Só os marcados serão alterados no ClickUp: <b>Status do Pagamento = PAGO</b> e
+        vencimento para o mesmo dia do mês seguinte.</p>
+      <div id="listaAtualizar"></div>
+      <button id="aplicar" class="primario">Aplicar marcados no ClickUp</button>
+    </section>
+
+    <!-- CONFIGURAÇÕES -->
+    <section id="aba-config" class="aba">
+      <label>Link da lista no ClickUp (aba “Visão Geral”)
+        <input id="cfgUrl" placeholder="https://app.clickup.com/.../v/l/...">
+      </label>
+      <label>Status a conferir (um por linha)
+        <textarea id="cfgStatus" rows="3"></textarea>
+      </label>
+      <label>Mensagem padrão <span class="sub">[NOME DO CLIENTE] [DATA DE VENCIMENTO] [LINK DE COBRANÇA]</span>
+        <textarea id="cfgModelo" rows="9"></textarea>
+      </label>
+      <label>Mensagem com vencimento alterado sem juros <span class="sub">também [NOVA DATA]</span>
+        <textarea id="cfgModelo2" rows="9"></textarea>
+      </label>
+      <label>Nomes no ClickUp → nomes no Asaas
+        <span class="sub">Formato: "Nome no ClickUp": "Nome no Asaas", (um por linha)</span>
+        <textarea id="cfgMapa" rows="10" class="mono"></textarea>
+      </label>
+      <label>Endereço do Asaas
+        <input id="cfgAsaas">
+      </label>
+      <button id="salvarConfig" class="primario">💾 Salvar configurações</button>
+      <p class="sub" id="cfgAviso"></p>
+    </section>
+  </main>
+
+  <footer id="rodape">
+    <div id="barra"><div id="barraCheia"></div></div>
+    <span id="status" class="sub">Pronto.</span>
+    <button id="parar" class="perigo" hidden>Parar</button>
+  </footer>
+
+  <script src="padroes.js"></script>
+  <script src="regras.js"></script>
+  <script src="motor.js"></script>
+  <script src="driver.js"></script>
+  <script src="painel.js"></script>
+</body>
+</html>

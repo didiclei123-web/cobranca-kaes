@@ -67,4 +67,4 @@ jobs:
             Baixe **CobrancasKAES-Windows.zip**, descompacte e abra **CobrancasKAES.exe**.
             Não precisa instalar nada.
           files: CobrancasKAES-Windows.zip
-          make_latest: true
+          make_latest: false

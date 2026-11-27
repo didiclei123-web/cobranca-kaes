@@ -1,0 +1,28 @@
+COBRANÇAS KAES — extensão do Microsoft Edge
+===========================================
+
+INSTALAR (uma vez só)
+ 1. Descompacte este .zip numa pasta fixa (ex.: Documentos\CobrancasKAES).
+    Não apague nem mova a pasta depois: o Edge usa ela.
+ 2. No Edge, abra o endereço:  edge://extensions
+ 3. Ligue "Modo de desenvolvedor" (chave no canto inferior esquerdo).
+ 4. Clique em "Carregar sem pacote" e escolha a pasta descompactada
+    (a que tem o arquivo manifest.json dentro).
+ 5. Clique no ícone de quebra-cabeça da barra do Edge e fixe "Cobranças KAES".
+
+USAR
+ - Clique no ícone da extensão: abre o painel lateral.
+ - Primeira vez: ⚙️ Configurações -> cole o link da lista do ClickUp
+   (aba "Visão Geral" da lista Gestão de Contratos & Cobranças) -> Salvar.
+   Cole também os nomes ClickUp -> Asaas no quadro "Nomes".
+ - Use os botões ou escreva do seu jeito: "quem tá devendo?",
+   "gera as mensagens", "mensagem pro Marcos, venceu 20/11/2026, sem juros".
+ - Esteja logado no ClickUp e no Asaas no Edge.
+ - Enquanto ela digita datas no ClickUp, o Edge mostra uma faixa
+   "Cobranças KAES começou a depurar este navegador". É normal.
+ - Não feche o painel nem mexa na aba de trabalho enquanto ela trabalha.
+   Para interromper, clique em "Parar".
+
+ATUALIZAR PARA UMA VERSÃO NOVA
+ Substitua os arquivos da pasta pelos novos e, em edge://extensions,
+ clique no botão de recarregar da extensão. As configurações continuam salvas.
