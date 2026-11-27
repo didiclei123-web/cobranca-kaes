@@ -1,0 +1,14 @@
+{
+  "clickup_url_lista": "",
+  "status_alvo": [
+    "Renovação Encaminhada",
+    "Para Renovar",
+    "Mensalistas - Ativos"
+  ],
+  "usar_ia_local": true,
+  "ollama_url": "http://localhost:11434",
+  "ollama_modelo": "llama3.2:3b",
+  "modelo_mensagem": "Olá, [NOME DO CLIENTE]!\n\nPassando para lembrar que sua fatura referente ao serviço de tráfego pago da KAES venceu no dia [DATA DE VENCIMENTO] e ainda está pendente:\n\n📌 Fatura de [DATA DE VENCIMENTO]\n🔗 Pague aqui: [LINK DE COBRANÇA]\n\nPedimos que regularize o pagamento o quanto antes para evitar a interrupção do serviço. Caso já tenha pago, é só nos enviar o comprovante.\n\nQualquer dúvida, fico à disposição!\n\nAtenciosamente,\nEquipe KAES",
+  "modelo_mensagem_sem_juros": "Olá, [NOME DO CLIENTE]!\n\nPassando para lembrar que sua fatura referente ao serviço de tráfego pago da KAES venceu no dia [DATA DE VENCIMENTO] e ainda está pendente. Para facilitar, alteramos o vencimento para [NOVA DATA], sem cobrança de juros:\n\n📌 Fatura de [DATA DE VENCIMENTO] (novo vencimento: [NOVA DATA], sem juros)\n🔗 Pague aqui: [LINK DE COBRANÇA]\n\nPedimos que regularize o pagamento o quanto antes para evitar a interrupção do serviço. Caso já tenha pago, é só nos enviar o comprovante.\n\nQualquer dúvida, fico à disposição!\n\nAtenciosamente,\nEquipe KAES",
+  "navegador": "msedge"
+}

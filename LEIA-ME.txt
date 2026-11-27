@@ -1,0 +1,40 @@
+COBRANÇAS KAES — como usar
+==========================
+
+ABRIR
+  Descompacte a pasta onde quiser (ex.: Documentos) e abra CobrancasKAES.exe.
+  Não precisa instalar nada. Para remover, é só apagar a pasta.
+  Na primeira vez o Windows pode avisar "O Windows protegeu o computador":
+  clique em "Mais informações" -> "Executar assim mesmo".
+
+PRIMEIRA VEZ
+  1. O programa pede o link da lista no ClickUp: abra a lista
+     "Gestão de Contratos & Cobranças" na aba "Visão Geral" e copie o endereço.
+  2. Ao clicar em "Conferir vencidos", abre uma janela do Edge. Faça login no
+     ClickUp e no Asaas nela e clique OK no aviso. O login fica salvo.
+
+DIA A DIA
+  🔎 Conferir vencidos   lê o ClickUp, confere no Asaas e mostra a tabela colorida.
+  ✉️ Gerar mensagens     monta a mensagem de cada inadimplente com o link (botão Copiar).
+  ✅ Atualizar ClickUp   mostra quem vai virar PAGO e a nova data; desmarque quem
+                         não quiser e clique em "Aplicar marcados".
+  👤 Mensagem p/ cliente  para um cliente específico (com opção "sem juros").
+  Ou escreva o pedido na caixa do topo, ex.: "confere quem não pagou".
+
+  Não mexa na janela do Edge enquanto o programa estiver trabalhando.
+
+CLIENTE NÃO ENCONTRADO NO ASAAS
+  Configurações -> "Nomes no ClickUp → nomes no Asaas" -> adicione uma linha:
+     "Nome da tarefa no ClickUp": "Nome no Asaas",
+  e clique em Salvar.
+
+ONDE FICAM AS COISAS
+  Tudo fica na pasta "dados", ao lado do .exe: login salvo, configurações,
+  relatórios e mensagens (botão "Abrir pasta de relatórios").
+  ATENÇÃO: a pasta "dados" guarda o seu login do Asaas e do ClickUp.
+  Não envie essa pasta para ninguém.
+
+IA LOCAL (opcional)
+  Se você instalar o Ollama (ollama.com) e rodar "ollama pull llama3.2:3b",
+  o programa entende pedidos escritos de forma mais livre. Sem ele, funciona
+  normalmente pelos botões e por palavras-chave.

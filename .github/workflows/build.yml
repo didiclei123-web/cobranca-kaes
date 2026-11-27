@@ -1,0 +1,70 @@
+name: Montar programa para Windows
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar ferramentas
+        run: python -m pip install --upgrade pip playwright pyinstaller
+
+      - name: Testes das regras e do passo a passo
+        run: |
+          python teste_regras.py
+          python teste_motor.py
+
+      - name: Montar o .exe
+        run: >
+          pyinstaller --noconfirm --onedir --windowed --name CobrancasKAES
+          --icon icone.ico
+          --add-data "config.json;."
+          --add-data "mapa_asaas.json;."
+          --add-data "icone.ico;."
+          --collect-all playwright
+          gui.py
+
+      - name: Autoteste (abre a janela e o Edge, e fecha)
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath "dist\CobrancasKAES\CobrancasKAES.exe" -ArgumentList "--autoteste" -Wait -PassThru
+          Get-Content "dist\CobrancasKAES\dados\autoteste.log"
+          if ($p.ExitCode -ne 0) { throw "Autoteste falhou (codigo $($p.ExitCode))" }
+          Remove-Item -Recurse -Force "dist\CobrancasKAES\dados"
+
+      - name: Empacotar
+        shell: pwsh
+        run: |
+          Copy-Item "..\LEIA-ME.txt" "dist\CobrancasKAES\LEIA-ME.txt"
+          Compress-Archive -Path "dist\CobrancasKAES" -DestinationPath "..\CobrancasKAES-Windows.zip"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CobrancasKAES-Windows
+          path: CobrancasKAES-Windows.zip
+
+      - name: Publicar em Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Cobranças KAES v1.0.${{ github.run_number }}
+          body: |
+            Baixe **CobrancasKAES-Windows.zip**, descompacte e abra **CobrancasKAES.exe**.
+            Não precisa instalar nada.
+          files: CobrancasKAES-Windows.zip
+          make_latest: true
